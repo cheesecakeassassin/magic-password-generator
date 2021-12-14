@@ -1,4 +1,8 @@
-function generatePassword() {}
+function generatePassword() {
+    var passwordLength;
+    // Prompt user for password length
+    passwordLength = prompt("Please enter desired password length (8 - 128 inclusive)");
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
