@@ -1,4 +1,10 @@
+// Generates password according to user's desired criteria
 function generatePassword() {
+    getPasswordLength();
+}
+
+// Prompt user to enter the password length
+function getPasswordLength() {
     var passwordLength;
     var validLength = false; // Boolean to assist in while-loop input validation
 
@@ -7,13 +13,12 @@ function generatePassword() {
         // Prompt user for password length
         passwordLength = prompt("Please enter desired password length (8 - 128 inclusive)");
         passwordLength = parseInt(passwordLength); // Gets integer value of string
-        
+
         // Checks that length is between 8 and 128 inclusive
-        if (passwordLength >= 8 && passwordLength <= 128)
-        {
+        if (passwordLength >= 8 && passwordLength <= 128) {
             validLength = true;
         } else {
-            alert("Invalid entry, try again...") // Error message
+            alert("Invalid entry, try again..."); // Error message
         }
     }
 }
