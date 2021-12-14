@@ -1,6 +1,6 @@
 function generatePassword() {
     var passwordLength;
-    var validLength = false;
+    var validLength = false; // Boolean to assist in while-loop input validation
 
     // While there is an valid length entered, the user will keep being prompted
     while (!validLength) {
