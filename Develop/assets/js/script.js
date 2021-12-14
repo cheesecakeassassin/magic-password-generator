@@ -23,6 +23,11 @@ function getPasswordLength() {
     }
 }
 
+// Prompt user for desired character types to include in 
+function getCharacterTypes()
+{
+    
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
