@@ -22,19 +22,27 @@ function promptPasswordLength() {
             alert("Invalid entry, please try again..."); // Error message
         }
     }
+    console.log(passwordLength);
 }
 
 // Prompt user for desired character types to include in 
 function promptCharacterTypes()
 {
+    // const characterTypes = {
+    //     lowercaseLetters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+    //     uppercaseLetters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+    //     numbers: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+    //     specialCharacters: [' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*','+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
+    // };
+
     // Initialize arrays containing different character types
-    const lowercaseLettersArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    const uppercaseLettersArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    const numbersArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    const specialCharactersArray = [' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*','+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
+    const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const uppercaseLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const specialCharacters = [' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*','+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
 
     // Array that will hold the character types to be included in the password
-    const includedCharacterTypesArray;
+    var selectedCharacterTypes = [];
 
     // Initialize booleans that tell program which character types to include
     var includeLowercase = false;
@@ -45,7 +53,7 @@ function promptCharacterTypes()
     // Boolean helps notify loop when user is done choosing character types to include
     var doneSelecting = false;
 
-    while (!(includeLowercase && includeUppercase && includeNumbers && includeSpecial) || !doneChoosing) {
+    while ((!includeLowercase && !includeUppercase && !includeNumbers && !includeSpecial) || !doneSelecting) {
         var characterTypeOption = prompt("Which character types whould you like to include in the password? Please enter 1 for LOWERCASE LETTERS, 2 for UPPERCASE LETTERS, 3 for NUMBERS, 4 for SPECIAL CHARACTERS, or 5 to FINISH.");
         characterTypeOption = parseInt(characterTypeOption);
 
@@ -63,8 +71,9 @@ function promptCharacterTypes()
                 includeSpecial = true;
                 break;
             case 5:
+                // If user says they are done, confirm that they want to proceed with their choices
                 var confirmSelections = window.confirm("Are you content with your choices?");
-                if (confirmSelections) {
+                if (confirmSelections && (includeLowercase || includeUppercase || includeNumbers || includeSpecial)) {
                  doneSelecting = true;
                   } 
                  else {
@@ -76,6 +85,44 @@ function promptCharacterTypes()
               break;
           }
     }
+
+    /* 
+    This epic conditional wall creates the pool of characters that will be used to generate
+    the password according to the character types that the user has selected
+    */
+    if (includeLowercase && includeUppercase && includeNumbers && includeSpecial) {
+        selectedCharacterTypes = lowercaseLetters.concat(uppercaseLetters, numbers, specialCharacters);
+    } else if (includeLowercase && includeUppercase && includeNumbers) {
+        selectedCharacterTypes = lowercaseLetters.concat(uppercaseLetters, numbers);
+    } else if (includeLowercase && includeUppercase && includeSpecial) {
+        selectedCharacterTypes = lowercaseLetters.concat(uppercaseLetters, specialCharacters);
+    } else if (includeLowercase && includeNumbers && includeSpecial) {
+        selectedCharacterTypes = lowercaseLetters.concat(numbers, specialCharacters);
+    } else if (includeLowercase && includeUppercase) {
+        selectedCharacterTypes = lowercaseLetters.concat(uppercaseLetters);
+    } else if (includeLowercase && includeNumbers) {
+        selectedCharacterTypes = lowercaseLetters.concat(numbers);
+    } else if (includeLowercase && includeSpecial) {
+        selectedCharacterTypes = lowercaseLetters.concat(specialCharacters);
+    } else if (includeLowercase) {
+        selectedCharacterTypes = lowercaseLetters;
+    } else if (includeUppercase && includeNumbers && includeSpecial) {
+        selectedCharacterTypes = uppercaseLetters.concat(numbers, specialCharacters);
+    } else if (includeUppercase && includeNumbers) {
+        selectedCharacterTypes = uppercaseLetters.concat(numbers);
+    } else if (includeUppercase && includeSpecial) {
+        selectedCharacterTypes = uppercaseLetters.concat(specialCharacters);
+    } else if (includeUppercase) {
+        selectedCharacterTypes = uppercaseLetters;
+    } else if (includeNumbers && includeSpecial) {
+        selectedCharacterTypes = numbers.concat(specialCharacters);
+    } else if (includeNumbers) {
+        selectedCharacterTypes = numbers;
+    } else {
+        selectedCharacterTypes = specialCharacters;
+    }
+
+    console.log(selectedCharacterTypes);
 }
 // prom references to the #generate element
 var generateBtn = document.querySelector("#generate");
