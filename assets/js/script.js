@@ -1,5 +1,5 @@
 var passwordLength; // Hold the user's desired password length after being prompted
-var selectedCharacterTypes; // Array that holds all of the character types that the user selected when prompted
+var selectedCharacterTypes = []; // Array that holds all of the character types that the user selected when prompted
 
 // Generates password according to user's desired criteria
 function generatePassword() {
@@ -27,7 +27,7 @@ function promptPasswordLength() {
     // While there is an valid length entered, the user will keep being prompted
     while (!validLength) {
         // Prompt user for password length
-        passwordLength = prompt("Please enter desired password length (8 - 128 inclusive)");
+        passwordLength = prompt(">>Please enter desired password length.\n (Must enter be a number between 8 - 128 inclusive)");
         passwordLength = parseInt(passwordLength); // Gets integer value of string
 
         // Checks that length is between 8 and 128 inclusive
@@ -67,15 +67,43 @@ function promptCharacterTypes()
         // Switch-statement to mark true the character types that the user selects
         switch (characterTypeOption) {
             case 1:
+                if (!includeLowercase) // If option is selected, array will include lowercase letters
+                {
+                    selectedCharacterTypes = selectedCharacterTypes.concat(characterType.lowercaseLetters);
+                    alert("Including lowercase letters...");
+                } else {
+                    alert("You already chose this character type!");
+                }
                 includeLowercase = true;
                 break;
             case 2:
+                if (!includeUppercase) // If option is selected, array will include uppercase letters
+                {
+                    selectedCharacterTypes = selectedCharacterTypes.concat(characterType.uppercaseLetters);
+                    alert("Including uppercase letters...");
+                } else {
+                    alert("You already chose this character type!");
+                }
                 includeUppercase = true;
                 break;
             case 3:
+                if (!includeNumbers) // If option is selected, array will include numbers
+                {
+                    selectedCharacterTypes = selectedCharacterTypes.concat(characterType.numbers);
+                    alert("Including numbers...");
+                } else {
+                    alert("You already chose this character type!");
+                }
                 includeNumbers = true;
                 break;
             case 4:
+                if (!includeSpecial) // If option is selected, array will include special characters
+                {
+                    selectedCharacterTypes = selectedCharacterTypes.concat(characterType.specialCharacters);
+                    alert("Including special characters...");
+                } else {
+                    alert("You already chose this character type!");
+                }
                 includeSpecial = true;
                 break;
             case 5:
@@ -94,41 +122,6 @@ function promptCharacterTypes()
                 window.alert("Invalid entry, please try again...");
                 break;
         }
-    }
-    /* 
-    This epic conditional wall creates the pool of characters that will be used to generate
-    the password according to the character types that the user has selected
-    */
-    if (includeLowercase && includeUppercase && includeNumbers && includeSpecial) {
-        selectedCharacterTypes = characterType.lowercaseLetters.concat(characterType.uppercaseLetters, characterType.numbers, characterType.specialCharacters);
-    } else if (includeLowercase && includeUppercase && includeNumbers) {
-        selectedCharacterTypes = characterType.lowercaseLetters.concat(characterType.uppercaseLetters, characterType.numbers);
-    } else if (includeLowercase && includeUppercase && includeSpecial) {
-        selectedCharacterTypes = characterType.lowercaseLetters.concat(characterType.uppercaseLetters, characterType.specialCharacters);
-    } else if (includeLowercase && includeNumbers && includeSpecial) {
-        selectedCharacterTypes = characterType.lowercaseLetters.concat(characterType.numbers, characterType.specialCharacters);
-    } else if (includeLowercase && includeUppercase) {
-        selectedCharacterTypes = characterType.lowercaseLetters.concat(characterType.uppercaseLetters);
-    } else if (includeLowercase && includeNumbers) {
-        selectedCharacterTypes = characterType.lowercaseLetters.concat(characterType.numbers);
-    } else if (includeLowercase && includeSpecial) {
-        selectedCharacterTypes = characterType.lowercaseLetters.concat(characterType.specialCharacters);
-    } else if (includeLowercase) {
-        selectedCharacterTypes = characterType.lowercaseLetters;
-    } else if (includeUppercase && includeNumbers && includeSpecial) {
-        selectedCharacterTypes = characterType.uppercaseLetters.concat(characterType.numbers, characterType.specialCharacters);
-    } else if (includeUppercase && includeNumbers) {
-        selectedCharacterTypes = characterType.uppercaseLetters.concat(characterType.numbers);
-    } else if (includeUppercase && includeSpecial) {
-        selectedCharacterTypes = characterType.uppercaseLetters.concat(characterType.specialCharacters);
-    } else if (includeUppercase) {
-        selectedCharacterTypes = characterType.uppercaseLetters;
-    } else if (includeNumbers && includeSpecial) {
-        selectedCharacterTypes = characterType.numbers.concat(characterType.specialCharacters);
-    } else if (includeNumbers) {
-        selectedCharacterTypes = characterType.numbers;
-    } else {
-        selectedCharacterTypes = characterType.specialCharacters;
     }
 }
 
