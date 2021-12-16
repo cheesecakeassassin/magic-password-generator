@@ -72,11 +72,11 @@ function promptCharacterTypes()
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.lowercaseLetters);
 
                     alert("Including lowercase letters...");
+                    includeLowercase = true;
                 } else
                 {
                     alert("You already chose this character type!");
                 }
-                includeLowercase = true;
                 break;
             case 2:
                 if (!includeUppercase) // If option is selected, array will include uppercase letters
@@ -84,11 +84,11 @@ function promptCharacterTypes()
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.uppercaseLetters);
 
                     alert("Including uppercase letters...");
+                    includeUppercase = true;
                 } else
                 {
                     alert("You already chose this character type!");
                 }
-                includeUppercase = true;
                 break;
             case 3:
                 if (!includeNumbers) // If option is selected, array will include numbers
@@ -96,11 +96,11 @@ function promptCharacterTypes()
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.numbers);
 
                     alert("Including numbers...");
+                    includeNumbers = true;
                 } else 
                 {
                     alert("You already chose this character type!");
                 }
-                includeNumbers = true;
                 break;
             case 4:
                 if (!includeSpecial) // If option is selected, array will include special characters
@@ -108,11 +108,11 @@ function promptCharacterTypes()
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.specialCharacters);
 
                     alert("Including special characters...");
+                    includeSpecial = true;
                 } else
                 {
                     alert("You already chose this character type!");
                 }
-                includeSpecial = true;
                 break;
             case 5:
                 // If user says they are done, confirm that they want to proceed with their choices
