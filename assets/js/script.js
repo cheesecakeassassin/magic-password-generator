@@ -70,8 +70,10 @@ function promptCharacterTypes()
                 if (!includeLowercase) // If option is selected, array will include lowercase letters
                 {
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.lowercaseLetters);
+
                     alert("Including lowercase letters...");
-                } else {
+                } else
+                {
                     alert("You already chose this character type!");
                 }
                 includeLowercase = true;
@@ -80,8 +82,10 @@ function promptCharacterTypes()
                 if (!includeUppercase) // If option is selected, array will include uppercase letters
                 {
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.uppercaseLetters);
+
                     alert("Including uppercase letters...");
-                } else {
+                } else
+                {
                     alert("You already chose this character type!");
                 }
                 includeUppercase = true;
@@ -90,8 +94,10 @@ function promptCharacterTypes()
                 if (!includeNumbers) // If option is selected, array will include numbers
                 {
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.numbers);
+
                     alert("Including numbers...");
-                } else {
+                } else 
+                {
                     alert("You already chose this character type!");
                 }
                 includeNumbers = true;
@@ -100,8 +106,10 @@ function promptCharacterTypes()
                 if (!includeSpecial) // If option is selected, array will include special characters
                 {
                     selectedCharacterTypes = selectedCharacterTypes.concat(characterType.specialCharacters);
+
                     alert("Including special characters...");
-                } else {
+                } else
+                {
                     alert("You already chose this character type!");
                 }
                 includeSpecial = true;
