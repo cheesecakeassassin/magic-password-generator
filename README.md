@@ -15,10 +15,10 @@ https://cheesecakeassassin.github.io/magic-password-generator/
 https://github.com/cheesecakeassassin/magic-password-generator
 
 ## Working page screenshots 
-<img src="./Develop/assets/images/password-generator-before.png">
-<img src="./Develop/assets/images/password-generator-length-prompt.png">
-<img src="./Develop/assets/images/password-generator-character-type-prompt.png">
-<img src="./Develop/assets/images/password-generator-after.png">
+<img src="./assets/images/password-generator-before.png">
+<img src="./assets/images/password-generator-length-prompt.png">
+<img src="./assets/images/password-generator-character-type-prompt.png">
+<img src="./assets/images/password-generator-after.png">
 
 ## Contributions
 ❤️Made by [Sebastian Santa]
